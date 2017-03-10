@@ -1,0 +1,31 @@
+/* Remove the navbar's default margin-bottom and rounded borders */ 
+.navbar{margin-bottom:0;border-radius:0;}
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+.row.content{height:650px}
+/* Set gray background color and 100% height */
+.sidenav {padding-top:20px;background-color:#f1f1f1;height:100%;}
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width:767px){
+	.sidenav{height:auto;padding:15px;}
+	.row.content{height:auto;}
+}
+.text-left{height:450px;border:1px solid #ddd;padding-top:4px;}
+#ble{padding:15px;}
+#json{overflow-y:scroll;overflow-x:scroll;height:390px;white-space:pre;font-family:monospace;}
+#location{height:390px;width:100%;padding:0;margin:0;}
+#user_data{overflow-y:scroll;height:370px;}
+#lv_can{overflow-y:scroll;height:390px;}
+#nfc{text-align:center;}
+#chartdiv-1{margin-top:25px;margin-bottom:-20px;width:100%;height:400px;}
+#chartdiv-2{margin-top:25px;margin-bottom:-20px;width:100%;height:400px;}
+#chartdiv-6{margin-top:25px;margin-bottom:-20px;width:100%;height:400px;}
+#chartdiv-3{margin-top:-25px;margin-bottom:-40px;width:100%;height:200px;}
+#chartdiv-4{margin-top:-25px;margin-bottom:-40px;width:100%;height:200px;}
+#chartdiv-5{margin-top:-25px;margin-bottom:-40px;width:100%;height:200px;}
+.amcharts-chart-div a{display:none !important}
+hr{margin:10px 0px;}
+.btn-ble{width:120px;height:300px;border-radius:55px 55px 10px 10px;}
+.btn-circle{float:left;width:30px;height:30px;text-align:center;padding:6px 0;font-size:12px;line-height:1.428571429;border-radius:15px;margin-left:7px;margin-right:7px;}
+h3{margin-top:4px;margin-left:5px;margin-right:5px;float:left;}
+.chk{float:left;width:30px;height:25px;margin-top:2px;margin-left:7px;margin-right:7px;}
+.div_header{float:left;width:100%;}

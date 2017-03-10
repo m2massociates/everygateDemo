@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Everygate Workaround</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/demo.css" type="text/css"/>
+	<link rel="icon" type="image/png" sizes="16x16" href="imgs/favicon-16x16.png">
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>                        
+			</button>
+			<a class="navbar-brand" href="https://www.m2massociates.com" target="_blank" style="padding:0;margin:0;"><img src="imgs/logo.png" style="height:60px;margin-top:-5px;"></a>
+		</div>
+		<div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav"></ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li style="padding-top:7px"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Connect</button></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+<div class="container-fluid text-center">    
+	<div class="row content">
+		<div class="col-md-3 text-left" id="location_div">
+			<div class="div_header">
+				<h3>GPS Tracking</h3>
+				<button title="toggle fullscreen" onclick="fullscreen('location')" type="button" class="btn btn-default btn-circle"><i class="glyphicon glyphicon-fullscreen"></i></button>
+				<input class="chk" type="checkbox" id="_location_json" title="show/hide topic json">
+			</div>
+			<div id="location" class="div_header"></div>
+		</div>
+		<div class="col-md-3 text-left" id="telemetry_1_div">
+			<div class="div_header">
+				<h3>Condition Monitoring</h3>
+				<button title="toggle fullscreen" onclick="fullscreen('telemetry_1')" type="button" class="btn btn-default btn-circle"><i class="glyphicon glyphicon-fullscreen"></i></button>
+				<input class="chk _estimote_telemetry_json" name="domainList" type="checkbox" title="show/hide topic json">
+			</div>
+			<div id="telemetry_1" class="div_header">
+				<b>Light:<span id="select_dev_id_1" style="width:200px;float:right;margin-left:7px;"></span></b>
+				<div id="chartdiv-1"></div>
+			</div>
+		</div>
+		<div class="col-md-3 text-left" id="telemetry_2_div">
+			<div class="div_header">
+				<h3>Condition Monitoring</h3>
+				<button title="toggle fullscreen" onclick="fullscreen('telemetry_2')" type="button" class="btn btn-default btn-circle"><i class="glyphicon glyphicon-fullscreen"></i></button>
+				<input class="chk _estimote_telemetry_json" name="domainList" type="checkbox" title="show/hide topic json">
+			</div>
+			<div id="telemetry_2" class="div_header">
+				<b>Temperature:<span id="select_dev_id_2" style="width:200px;float:right;margin-left:7px;"></span></b>
+				<div id="chartdiv-2"></div>
+			</div>
+		</div>
+		<div class="col-md-3 text-left" id="telemetry_3_div">
+			<div class="div_header">
+				<h3>Condition Monitoring</h3>
+				<button title="toggle fullscreen" onclick="fullscreen('telemetry_3')" type="button" class="btn btn-default btn-circle"><i class="glyphicon glyphicon-fullscreen"></i></button>
+				<input class="chk _estimote_telemetry_json" name="domainList" type="checkbox" title="show/hide topic json">
+				<span id="select_dev_id" style="width:100px;float:left;margin-left:7px;"></span>
+			</div>
+			<div id="telemetry_3" class="div_header">
+				<b>Pressure:<span id="select_dev_id_3" style="width:200px;float:right;margin-left:7px;"></span></b>
+				<div id="chartdiv-6"></div>
+			</div>
+		</div>
+		<div class="col-md-3 text-left" id="nfc_div">
+			<div class="div_header">
+				<h3>NFC Tag Scanner</h3>
+				<button title="toggle fullscreen" onclick="fullscreen('nfc')" type="button" class="btn btn-default btn-circle"><i class="glyphicon glyphicon-fullscreen"></i></button>
+				<input class="chk" type="checkbox" id="_nfc_json" title="show/hide topic json">
+			</div>
+			<div id="nfc" class="div_header"></div>
+		</div>
+		<div class="col-md-3 text-left" id="ble_div">
+			<div class="div_header">
+				<h3>BluetoothLE Buttons</h3>
+				<button title="toggle fullscreen" onclick="fullscreen('ble')" type="button" class="btn btn-default btn-circle"><i class="glyphicon glyphicon-fullscreen"></i></button>
+				<input class="chk" type="checkbox" id="_ble_json" title="show/hide topic json">
+			</div>
+			<div id="ble" class="div_header">
+				<div id="btn-1" class="btn-ble" style="background:black;float:left;" ></div>
+				<div id="btn-2" class="btn-ble" style="background:gray; float:right;"></div>
+			</div>
+		</div>
+		<div class="col-md-3 text-left" id="dig_input_div">
+			<div class="div_header">
+				<h3>DIG INPUT</h3>
+				<button title="toggle fullscreen" onclick="fullscreen('dig_input')" type="button" class="btn btn-default btn-circle"><i class="glyphicon glyphicon-fullscreen"></i></button>
+				<input class="chk _estimote_telemetry_json" name="domainList" type="checkbox" title="show/hide topic json">
+			</div>
+			<div id="dig_input" class="div_header">
+				<i class="glyphicons glyphicons-door"></i>
+				<b>GPIO:<span id="select_dev_id_4" style="width:200px;float:right;margin-left:7px;"></span></b>
+				<div id="digInputDiv" style="width:100%;float:left;display:none">
+					<select id="dig_input_s" style="margin-top:5px;float:right;width:200px;">
+						<option value="0">gpio 1</option>
+						<option value="1">gpio 2</option>
+						<option value="2">gpio 3</option>
+						<option value="3">gpio 4</option>
+					</select>
+				</div>
+				<hr style="float:left;width:100%"/>
+				<div id="dig_input_res_div" style="width:100%;float:left;text-align:center"></div>
+			</div>
+		</div>
+		<div class="col-md-3 text-left" id="dig_output_div">
+			<div class="div_header">
+				<h3>DIG OUTPUT</h3>
+				<button title="toggle fullscreen" onclick="fullscreen('dig_output')" type="button" class="btn btn-default btn-circle"><i class="glyphicon glyphicon-fullscreen"></i></button>
+				<input class="chk _estimote_publish_json" type="checkbox" title="show/hide topic json">
+			</div>
+			<div id="dig_output" class="div_header">
+				<i class="glyphicons glyphicons-door"></i>
+				<b>GPIO:<span id="select_dev_id_5" style="width:200px;float:right;margin-left:7px;"></span></b>
+				<div id="digOutputDiv" style="width:100%;float:left;display:none">
+					<select id="dig_output_s" style="margin-top:5px;float:right;width:200px;">
+						<option value="0">gpio 1</option>
+						<option value="1">gpio 2</option>
+						<option value="2">gpio 3</option>
+						<option value="3">gpio 4</option>
+					</select>
+					<select id="dig_output_v" style="margin-top:5px;float:right;width:200px;">
+						<option value="true" >true </option>
+						<option value="false">false</option>
+					</select>
+					<button type="submit" class="btn btn-success" onclick="publishMsg()" id="publish_btn" style="margin-top:-10px;float:left;">Publish</button>
+				</div>
+				<hr style="float:left;width:100%"/>
+				<div id="dig_output_res_div" style="width:100%;float:left;text-align:center"></div>
+			</div>
+		</div>
+		<div class="col-md-3 text-left" id="lv_can_div">
+			<div class="div_header">
+				<h3>CAN-BUS Sensors</h3>
+				<button title="toggle fullscreen" onclick="fullscreen('lv_can')" type="button" class="btn btn-default btn-circle"><i class="glyphicon glyphicon-fullscreen"></i></button>
+				<input class="chk" type="checkbox" id="_lv_can_json" title="show/hide topic json">
+			</div>
+			<div id="lv_can" class="div_header">
+				<b>RPM:</b>
+				<div id="chartdiv-3"></div><hr />
+				<b>Fuel Level(Lt):</b>
+				<div id="chartdiv-4"></div><hr />
+				<b>Pedal Position(%):</b>
+				<div id="chartdiv-5"></div><hr />
+			</div>
+		</div>
+		<div class="col-md-3 text-left" id="diagnostics_div">
+			<div class="div_header">
+				<h3>Self-Diagnostics</h3>
+				<button title="toggle fullscreen" onclick="fullscreen('diagnostics')" type="button" class="btn btn-default btn-circle"><i class="glyphicon glyphicon-fullscreen"></i></button>
+				<input class="chk" type="checkbox" id="_diagnostics_json" title="show/hide topic json">
+			</div>
+			<div id="diagnostics" class="div_header">
+				<h4><i class="glyphicon glyphicon-phone">		</i> imei: 			<b id="imei_state"></b></h4>
+				<h4><i class="glyphicon glyphicon-off">			</i> status: 		<b id="imei_status"></b></h4>
+				<h4><i class="glyphicon glyphicon-time">		</i> time: 			<b id="time_state"></b></h4>
+				<h4><i class="glyphicon glyphicon-globe">		</i> wifi: 			<b id="wifi_state"></b></h4>
+				<h4><i class="glyphicon glyphicon-sort">		</i> mobile data: 	<b id="data_state"></b></h4>
+				<h4><i class="glyphicon glyphicon-screenshot">	</i> GPS: 			<b id="GPS_state"></b></h4>
+				<h4><i class="glyphicon glyphicon-link">		</i> bluetooth: 	<b id="bluetooth_state"></b></h4>
+				<h4><i class="glyphicon glyphicon-record">		</i> nfc: 			<b id="nfc_state"></b></h4>
+				<h4><i class="glyphicon glyphicon-plane">		</i> airplane mode: <b id="airplane_state"></b></h4>
+			</div>
+		</div>
+		<div class="col-md-3 text-left" id="user_data_div">
+			<div class="div_header">
+				<h3>Worker's Feedback</h3>
+				<button title="toggle fullscreen" onclick="fullscreen('user_data')" type="button" class="btn btn-default btn-circle"><i class="glyphicon glyphicon-fullscreen"></i></button>
+				<input class="chk" type="checkbox" id="_user_data_json" title="show/hide topic json">
+			</div>
+			<div id="user_data" class="div_header"></div>
+		</div>
+		<div class="col-md-3 text-left" id="json_div">
+			<div class="div_header">
+				<h3>raw json</h3>
+				<button title="toggle fullscreen" onclick="fullscreen('json')" type="button" class="btn btn-default btn-circle"><i class="glyphicon glyphicon-fullscreen"></i></button>
+				<button title="clear content" onclick="$('#json').empty();" type="button" class="btn btn-default btn-circle"><i class="glyphicon glyphicon-refresh"></i></button>
+			</div>
+			<div id="json" class="div_header"></div>
+		</div>
+	</div>
+</div>
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Credentials</h4>
+			</div>
+			<div class="modal-body">
+				<p>
+					<form id="connect_form" name="connect_form" class="form-horizontal">
+						<div class="form-group">
+							<label class="control-label col-sm-3" for="hostname">hostname:</label>
+							<div class="col-sm-9">
+								<input name="field1" type="text" class="form-control" id="hostname" placeholder="Enter hostname" value="api.m2massociates.com">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-3" for="port">port:</label>
+							<div class="col-sm-9"> 
+								<input name="field2" type="number" class="form-control" id="port" placeholder="Enter port" value="9002">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-3" for="qos">qos:</label>
+							<div class="col-sm-9"> 
+								<input name="field3" type="number" class="form-control" id="qos" placeholder="Enter qos" value="0">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-3" for="userName">username:</label>
+							<div class="col-sm-9"> 
+								<input name="field4" type="text" class="form-control" id="userName" placeholder="Enter username" value="everygatedemo@gmail.com">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-3" for="password">password:</label>
+							<div class="col-sm-9"> 
+								<input name="field5" type="text" class="form-control" id="password" placeholder="Enter password" value="8f9b008165c4dc988087c55d2ad4b9af">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-3" for="keepAliveInterval">keep alive:</label>
+							<div class="col-sm-9"> 
+								<input name="field6" type="number" class="form-control" id="keepAliveInterval" placeholder="Enter keep alive" value="60">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-3" for="timeout">timeout:</label>
+							<div class="col-sm-9"> 
+								<input name="field7" type="number" class="form-control" id="timeout" placeholder="Enter timeout" value="3">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-3" for="useSSL">ssl:</label>
+							<div class="col-sm-9"> 
+								<select name="field8" class="form-control" id="useSSL">
+									<option value="true">true</option>
+									<option value="false">false</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-3" for="cleanSession">clean session:</label>
+							<div class="col-sm-9"> 
+								<select name="field9" class="form-control" id="cleanSession">
+									<option value="true">true</option>
+									<option value="false">false</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="control-label col-sm-3" for="topic">Topic:</label>
+							<div class="col-sm-9"> 
+								<input name="field10" type="text" class="form-control" id="topic" placeholder="Enter topic" value="85/358240059005652/#">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-12" style="text-align:right">
+								<label for="remeber">Remember Settings:</label>
+								<input type="checkbox" id="remeber">
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-sm-12" style="text-align:right">
+								<button class="btn btn-info" onclick="clearCookies()" id="clear_btn">Clear</button>
+							</div>
+						</div>
+					</form>
+				</p>
+				<div id="connection_result" class="alert alert-success" style="margin-top:18px;display:none">
+					<strong>Successfully Connected!</strong>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="btn btn-danger" onclick="disconnect()" id="disconnect_btn" style="display:none">Disconnect</button>
+				<button type="submit" class="btn btn-success" onclick="connect()" id="connect_btn">Connect</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="js/pako.js"></script>
+<script src="js/mqttLib.js"></script>
+<script src="js/main.js"></script>
+<script src="js/jquery.cookie.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
+<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+<script src="https://www.amcharts.com/lib/3/gauge.js"></script>
+<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+<script src="js/jquery.pulsate.min.js"></script>
+<script src="js/cookieFormElements.js"></script>
+</html>
